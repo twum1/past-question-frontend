@@ -15,7 +15,7 @@ function App() {
     formData.append('year', year);
 
     try {
-      const res = await axios.post('http://localhost:5000/upload', formData, {
+      const res = await axios.post('https://past-question-backend.onrender.com/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setDownloadURL(res.data.downloadURL);
@@ -28,7 +28,7 @@ function App() {
 
   const handleDownload = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/download/${course}/${year}`);
+      const res = await axios.get(`https://past-question-backend.onrender.com/download/${course}/${year}`);
       window.open(res.data.downloadURL, '_blank');
     } catch (error) {
       console.error(error);
